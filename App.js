@@ -9,6 +9,8 @@ import RestaurantDetail from "./components/restaurantDetail";
 const About = lazy(() => import("./components/about"));
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./components/userContext";
+import { Provider } from "react-redux";
+import Store from "./utils/reduxToolKit/store";
 
 // --------------------- creating react element --------------------
 // const element = React.createElement(
@@ -62,4 +64,9 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />);
+
+root.render(
+  <Provider store={Store}>
+    <RouterProvider router={appRouter} />
+  </Provider>
+);
